@@ -102,7 +102,6 @@ gulp.task('watch',  ['webpack', 'styles'], function() {
 gulp.task('make-dist', function() {
 	return gulp.src([
 			'build/**/*',
-			'icons/*.svg',
 			'index.html'
 		])
 		.pipe(copy('dist'));
