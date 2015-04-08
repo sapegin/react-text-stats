@@ -1,0 +1,49 @@
+// Author: Artem Sapegin, http://sapegin.me, 2015
+
+.type-stats {
+	space(3);
+
+	&__preview {
+		space(2);
+		position:relative;
+		border-right:1px solid line_color;
+	}
+
+	&__preview-ruler {
+		position:absolute;
+		top:0;
+		bottom:0;
+		border-right:1px solid light_color;
+		z-index:-1;
+	}
+	&_overflow &__preview-ruler {
+		border-color:error_color;
+	}
+
+	&__preview-inner {
+		line-height:1.2;
+		word-wrap:normal;
+		outline:0;
+		&:focus:before {
+			content:"";
+			position:absolute;
+			top:0;
+			bottom:0;
+			left:-(spacer);
+			border-left:2px solid form_focus_color;
+		}
+	}
+	&_overflow &__preview-inner {
+		color:error_color;
+	}
+
+	&__preview,
+	&__preview-ruler,
+	&__preview-inner {
+		transition:all .1s ease-in-sine;
+	}
+
+	&__stats {
+		font-size:16px;
+	}
+}
