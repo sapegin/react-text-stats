@@ -107,7 +107,7 @@ gulp.task('make-dist', function() {
 		.pipe(copy('dist'));
 });
 
-gulp.task('gh-deploy', function() {
+gulp.task('gh-deploy', ['make-dist'], function() {
 	return gulp.src('dist/**/*')
 		.pipe(ghPages());
 });
