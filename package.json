@@ -32,7 +32,7 @@
     "test": "gulp && npm run jest",
     "jest": "jest",
     "build": "NODE_ENV=production gulp",
-    "deploy": "NODE_ENV=production gulp deploy",
+    "deploy": "npm run build && gulp deploy",
     "server": "gulp watch"
   },
   "jest": {

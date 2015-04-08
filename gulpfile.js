@@ -95,7 +95,7 @@ gulp.task('watch',  ['webpack', 'styles'], function() {
 			server: '.'
 		});
 	}
-	watch(['app/**/*.{js,jsx}'], ['webpack']);
+	watch(['app/**/*.js'], ['webpack']);
 	watch(['styles/**/*.styl'], ['styles']);
 });
 
@@ -113,4 +113,4 @@ gulp.task('gh-deploy', function() {
 });
 
 gulp.task('default', ['webpack', 'styles']);
-gulp.task('deploy', ['webpack', 'styles', 'make-dist', 'gh-deploy']);
+gulp.task('deploy', ['make-dist', 'gh-deploy']);
