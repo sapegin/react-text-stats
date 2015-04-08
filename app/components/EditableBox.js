@@ -15,6 +15,14 @@ export default React.createClass({
 		RestAttrsMixin
 	],
 
+	getElement() {
+		return React.findDOMNode(this.refs.text);
+	},
+
+	getValue() {
+		return this.getElement().textContent;
+	},
+
 	_handleKeydown(event) {
 		// Disable formatting hotkeys
 		if (event.ctrlKey || event.metaKey) {
@@ -26,7 +34,11 @@ export default React.createClass({
 	},
 
 	_handleInput() {
-		let text = React.findDOMNode(this.refs.text).textContent;
+		this._emitChange(this.getValue());
+	},
+
+	_handleBlur() {
+		let text = this.getValue();
 
 		// Normalize spaces
 		text = text
@@ -47,6 +59,7 @@ export default React.createClass({
 		return (
 			<div contentEditable spellCheck="false" ref="text"
 				onKeyDown={this._handleKeydown}
+				onBlur={this._handleBlur}
 				onInput={this._handleInput}
 				{...this.restAttrs()}
 			>
